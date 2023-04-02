@@ -7,11 +7,11 @@ import java.net.Socket;
 
 public class MultithreadingServerCountDown {
 
-    public static class Worker extends Thread {
+    public static class Handler extends Thread {
 
         private Socket socket;
 
-        public Worker(Socket socket) {
+        public Handler(Socket socket) {
             this.socket = socket;
         }
 
@@ -40,7 +40,7 @@ public class MultithreadingServerCountDown {
             while (true) {
                 try {
                     Socket socket = serverSocket.accept();
-                    Thread worker = new Worker(socket);
+                    Thread worker = new Handler(socket);
                     worker.start();
                 } catch (Exception e) {
                     System.err.println(e.getMessage());
